@@ -1,0 +1,118 @@
+1 - The FROM Clause
+
+	1.1 - [Data base].[Schema].[Table] AS <Alias>
+
+2 - The SELECT Clause
+
+	2.1 - Attributes 
+		
+		2.1.1 - T-SQL supports using an asterisk (*) as an alternative, but...
+
+	2.2 - Alias
+		2.2.1 - <expression> AS <alias> 
+		2.2.2 - <expression> <alias>
+		2.2.3 - <alias> = <expression>
+		
+	2.3 - Using DISTINCT
+	
+3 - Delimiting Identifiers
+
+	3.1 [Schema].[Table]
+	3.2 "Schema"."Table"
+
+4 - Choosing the Appropriate Data Type
+
+	4.1 - Types
+	
+		- NUMERIC
+			- TINYINT - 1 byte
+			- SMALLINT
+			- INT - 4 bytes
+			- BIGINT - 8 BYTES
+
+		- STRING
+			- CHAR
+			- VARCHAR
+
+		- UNICODE STRING
+			- NCHAR
+			- NVARHCAR
+
+		- APPROXIMATE NUMERIC
+			- FLOAT - 8 bytes
+			- REAL - 4 bytes
+	
+		- BINARY STRING	
+			- BINARY
+			- VARBINARY
+		
+		- DATE AND TIME
+			- DATE - 3 bytes
+			- TIME
+			- DATETIME2
+			- SMALLDATETIME
+			- DATETIME - 8 bytes
+			- DATETIMEOFFSET
+		
+		- DECIMAL
+		- UNIQUEIDENTIFIER - 16 bytes
+	
+	4.2 - NULLABLE
+	4.3 - Fixed Types (char) vs. Dynamic Types (varchar)
+	4.4 - Regular character types (CHAR, VARCHAR) vs. Unicode types (NCHAR, NVARCHAR)
+	4.5 - Functions
+		
+		- CAST - CAST('abc' AS INT)
+		- CONVERT - CONVERT(DATE, '1/2/2012', 101) 
+		- PARSE - PARSE('1/2/2012' AS DATE USING 'en-US')
+		- TRY_CAST - TRY_CAST('abc' AS INT)
+		- TRY_CONVERT
+		- TRY_PARSE
+
+	4.6 - Types For Keys
+
+		- The identity column property
+		- The sequence object
+		- Nonsequential GUIDs - NEWID()
+		- Sequential GUIDs
+
+5 - Date and Time Functions
+
+	5.1 - Current Date and Time
+
+		- GETDATE - Returning the current date and time
+		- CURRENT_TIMESTAMP - Returning the current date and time (standard)
+		- GETUTCDATE
+		- SYSDATETIME
+		- SYSUTCDATETIME
+		- SYSDATETIMEOFFSET
+
+	5.2 - Date and Time Parts
+
+		- DATEPART - DATEPART(month, '20120212')
+		- DATENAME - DATENAME(month, '20120212')
+		- DATEFROMPARTS
+		- DATETIME2FROMPARTS
+		- DATETIMEFROMPARTS
+		- DATETIMEOFFSETFROMPARTS
+		- SMALLDATETIMEFROMPARTS
+		- TIMEFROMPARTS
+		- EOMONTH - EOMONTH(SYSDATETIME())
+
+	5.3 - Add and Diff
+	
+		- DATEADD - DATEADD(year, 1, '20120212') 
+		- DATEDIFF - DATEDIFF(day, '20110212', '20120212') 
+
+	5.4 - Offset
+
+		- SWITCHOFFSET - SWITCHOFFSET('20130212 14:00:00.0000000 -08:00', '-05:00')
+		- TODATETIMEOFFSET - TODATETIMEOFFSET('20130212 14:00:00.0000000', '-08:00')
+
+6 - Character Functions
+
+	6.1 - Concatenation
+
+		- CONCAT
+
+

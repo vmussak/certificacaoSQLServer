@@ -1,0 +1,36 @@
+1 - Apresentar o Material
+
+	1.1 - Motrar repositório no github (https://github.com/Rafael-Pessoni/certificacaoSQLServer)
+	1.2 - Criar o banco de dados
+
+2 - Evolução
+
+	2.1 - evolução.jpg
+	
+3 - Propriedades de uma coleção
+
+	3.1 - A set has no duplicates
+	3.2 - There’s no relevance to the order of the elements
+	3.3 - All attributes must have unique names
+
+4 - Exercício 
+	
+	4.1 - Make the Nonrelational Query Relational (exercicio-non-relational-query.sql)
+
+5 - Logical Query Processing Phases
+
+	5.2 - Qual a ordem de execução?
+
+		- SELECT
+		- FROM
+		- WHERE
+		- GROUP BY
+		- HAVING
+		- ORDER BY
+
+	5.1 - Exemplo (exemplo-query-completa.sql)
+
+6 - Questions
+
+	11.1 - Why is it important to use standard SQL code when possible and know what is standard and what isn’t?
+
