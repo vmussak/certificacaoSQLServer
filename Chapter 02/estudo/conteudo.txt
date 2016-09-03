@@ -23,7 +23,7 @@
 4 - Choosing the Appropriate Data Type
 
 	4.1 - Types
-	
+		- Todos os tipos em: https://msdn.microsoft.com/pt-br/library/ms187752.aspx
 		- NUMERIC
 			- TINYINT - 1 byte
 			- SMALLINT
@@ -104,7 +104,8 @@
 		- DATEADD - DATEADD(year, 1, '20120212') 
 		- DATEDIFF - DATEDIFF(day, '20110212', '20120212') 
 
-	5.4 - Offset
+	5.4 - Offset
+
 
 		- SWITCHOFFSET - SWITCHOFFSET('20130212 14:00:00.0000000 -08:00', '-05:00')
 		- TODATETIMEOFFSET - TODATETIMEOFFSET('20130212 14:00:00.0000000', '-08:00')
@@ -113,6 +114,7 @@
 
 	6.1 - Concatenation
 
-		- CONCAT
+		- CONCAT
+
 
 
