@@ -23,12 +23,15 @@
 4 - Choosing the Appropriate Data Type
 
 	4.1 - Types
+		- Consultar as informações sobre o tipo: sp_help
 		- Todos os tipos em: https://msdn.microsoft.com/pt-br/library/ms187752.aspx
 		- NUMERIC
-			- TINYINT - 1 byte
-			- SMALLINT
-			- INT - 4 bytes
+			- DECIMAL
 			- BIGINT - 8 BYTES
+			- INT - 4 bytes
+			- SMALLINT
+			- TINYINT - 1 byte
+			- MONEY
 
 		- STRING
 			- CHAR
@@ -54,7 +57,6 @@
 			- DATETIME - 8 bytes
 			- DATETIMEOFFSET
 		
-		- DECIMAL
 		- UNIQUEIDENTIFIER - 16 bytes
 	
 	4.2 - NULLABLE
@@ -114,7 +116,46 @@
 
 	6.1 - Concatenation
 
-		- CONCAT
+		- CONCAT - The + operator by default yields a NULL result on NULL input, whereas the CONCAT function treats NULLs as empty strings.
+		- SUBSTRING('abcde', 1, 3)
+		- CHARINDEX(' ','Itzik Ben-Gan')
+		- LEFT
+		- RIGHT
+		- LIKE
+		- LEN(N'xyz ')  
+		- DATALENGTH(N'xyz')
+		- REPLACE('.1.2.3.', '.', '/')
+		- REPLICATE('0', 10)
+		- STUFF(',x,y,z', 1, 1, '')
+		- UPPER 
+		- LOWER
+		- LTRIM
+		- RTRIM
+		- FORMAT(1759, '000000000')
 
+7 - CASE Expression and Related Functions
+
+	7.1 - CASE is a expression and not a statement
+
+	7.2 - 	CASE <value> 
+				WHEN 0 THEN 'No' 
+				WHEN 1 THEN 'Yes' 
+				ELSE 'Unknown' 
+			END AS Result
+
+	7.3 - 	CASE 
+				WHEN <expression> THEN 'Low' 
+				WHEN <expression> THEN 'Medium' 
+				WHEN <expression> THEN 'High'
+ 				ELSE 'Unknown'	
+ 			END AS pricerange
+	
+	7.4 - Function
+
+		- COALESCE(NULL, 'x', 'y') 
+		- NULLIF
+		- ISNULL
+		- IIF(orderyear = 2012, qty, 0)
+		- CHOOSE(2, 'x', 'y', 'z')
 
 
