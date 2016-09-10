@@ -1,6 +1,8 @@
 1 - Apresentar o Material
 
 	1.1 - Motrar repositório no github (https://github.com/Rafael-Pessoni/certificacaoSQLServer)
+		https://www.microsoftpressstore.com/store/training-kit-exam-70-461-querying-microsoft-sql-server-9780735666054#downloads
+	
 	1.2 - Criar o banco de dados
 
 2 - Evolução
@@ -9,8 +11,8 @@
 	
 3 - Propriedades de uma coleção
 
-	3.1 - A set has no duplicates
-	3.2 - There’s no relevance to the order of the elements
+	3.1 - A set has no duplicates {1,2,3,3,4} == {1,2,3,4}
+	3.2 - There’s no relevance to the order of the elements {4,3,2,1} == {1,2,3,4}
 	3.3 - All attributes must have unique names
 
 4 - Exercício 
@@ -26,6 +28,13 @@
 		- WHERE
 		- GROUP BY
 		- HAVING
+		- ORDER BY
+
+		- FROM
+		- WHERE
+		- GROUP BY
+		- HAVING
+		- SELECT
 		- ORDER BY
 
 	5.1 - Exemplo (exemplo-query-completa.sql)
