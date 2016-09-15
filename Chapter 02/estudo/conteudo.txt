@@ -1,4 +1,4 @@
-1 - The FROM Clause
+﻿1 - The FROM Clause
 
 	1.1 - [Data base].[Schema].[Table] AS <Alias>
 
@@ -27,9 +27,9 @@
 		- Todos os tipos em: https://msdn.microsoft.com/pt-br/library/ms187752.aspx
 		- NUMERIC
 			- DECIMAL
-			- BIGINT - 8 BYTES
+			- BIGINT - 8 bytes
 			- INT - 4 bytes
-			- SMALLINT
+			- SMALLINT - 2 bytes
 			- TINYINT - 1 byte
 			- MONEY
 
