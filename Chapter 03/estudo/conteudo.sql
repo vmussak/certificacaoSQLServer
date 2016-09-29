@@ -15,12 +15,14 @@
 		FROM Sales.Orders
 		WHERE COALESCE(shippeddate, '19000101') = COALESCE(@dt, '19000101');
 
+
 	-- alternativa
 	SELECT  orderid, 
 			orderdate, 
 			empid	
 		FROM Sales.Orders
-		WHERE shippeddate = @dt OR (shippeddate IS NULL AND @dt IS NULL);
+		WHERE shippeddate = @dt 
+			OR (shippeddate IS NULL AND @dt IS NULL);
 
 -- FILTERING CHARACTER DATA
 
@@ -44,10 +46,10 @@
 			empid, 
 			custid
 		FROM Sales.Orders
-		WHERE orderdate = '02/12/07';
-		-- WHERE YEAR(orderdate) = 2007 AND MONTH(orderdate) = 2;
-		-- WHERE orderdate >= '20070201' AND orderdate < '20070301';
-		-- WHERE orderdate BETWEEN '20070201' AND '20070228 23:59:59.999'
+		--WHERE orderdate = '02/12/07';
+		--WHERE YEAR(orderdate) = 2007 AND MONTH(orderdate) = 2;
+		--WHERE orderdate >= '20070201' AND orderdate < '20070301';
+		--WHERE orderdate BETWEEN '20070201' AND '20070228 23:59:59.999'
 
 
 	-- problema 
@@ -57,7 +59,7 @@
 			empid
 		FROM Sales.Orders
 		WHERE orderdate BETWEEN '20080211' AND '20080212 23:59:59.999';
-
+	
 	-- solucao
 	SELECT  orderid, 
 			orderdate, 
@@ -87,9 +89,8 @@
 			MONTH(birthdate) AS birthmonth
 		FROM HR.Employees
 		WHERE country = N'USA' AND region = N'WA'
-		ORDER BY city, empid;
-		
-	-- ORDER BY 4, 1;
+		-- ORDER BY city, empid;
+		ORDER BY 4, 1;
 	
 	-- problema
 	SELECT DISTINCT city
@@ -103,7 +104,8 @@
 		FROM Sales.Orders
 		ORDER BY orderdate DESC;
 
-	SELECT TOP (1) PERCENT orderid, orderdate, custid, empid
+	DECLARE @x int = 30
+	SELECT TOP (@x) orderid, orderdate, custid, empid
 		FROM Sales.Orders
 		ORDER BY orderdate DESC;
 
@@ -112,12 +114,15 @@
 	-- Option to guarantee determinism 
 	SELECT TOP (3) WITH TIES orderid, orderdate, custid, empid
 		FROM Sales.Orders
-		ORDER BY orderdate DESC; --, orderid DESC;
+		ORDER BY orderdate DESC, orderid DESC;
 
 	/*
-			In order to make the syntax intuitive, you can use the keywords NEXT or FIRST interchangeably.
-		When skipping some rows, it might be more intuitive to you to use the keywords FETCH NEXT to indicate 
-		how many rows to filter; but when not skipping any rows, it might be more intuitive to you to use the 
+			In order to make the syntax intuitive, you can use 
+			the keywords NEXT or FIRST interchangeably.
+		When skipping some rows, it might be more intuitive 
+		to you to use the keywords FETCH NEXT to indicate 
+		how many rows to filter; but when not skipping any 
+		rows, it might be more intuitive to you to use the 
 		keywords FETCH FIRST.
 	*/
 
@@ -146,9 +151,14 @@
 	SELECT orderid, orderdate, custid, empid
 		FROM Sales.Orders
 		ORDER BY orderdate DESC, orderid DESC
-		OFFSET (@pagesize - 1) * @pagesize ROWS FETCH NEXT @pagesize ROWS ONLY;
+		OFFSET (@pagenum - 1) * @pagesize ROWS FETCH NEXT @pagesize ROWS ONLY;
 
-	-- Question: How do you guarantee deterministic results with TOP?
 	-- Answer: OFFSET-FETCH is standard and TOP isn’t; also, OFFSET-FETCH supports a skipping capability that TOP doesn’t.
 
 	-- Exercício: Fazer os Case Scenarios;
+
+
+	CREATE INDEX IDX_Teste ON Sales.Orders(orderdate)
+
+	ALTER TABLE Sales.Orders
+	ALTER COLUMN orderdate datetime null 
