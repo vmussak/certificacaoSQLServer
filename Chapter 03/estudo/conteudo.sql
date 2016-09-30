@@ -97,6 +97,62 @@
 		WHERE country = N'USA' AND region = N'WA'
 		ORDER BY birthdate;
 
+<<<<<<< HEAD
 -- FILTERING DATA WITH TOP AND OFFSET-FETH
+=======
+-- FILTERING DATA WITH TOP AND OFFSET-FETCH
+>>>>>>> 2fec702a0a627ed09f4d3eea6d9341992ca0e805
 
-	
+	SELECT TOP (3) orderid, orderdate, custid, empid
+		FROM Sales.Orders
+		ORDER BY orderdate DESC;
+
+	SELECT TOP (1) PERCENT orderid, orderdate, custid, empid
+		FROM Sales.Orders
+		ORDER BY orderdate DESC;
+
+	-- The correct syntax is with parentheses
+
+	-- Option to guarantee determinism 
+	SELECT TOP (3) WITH TIES orderid, orderdate, custid, empid
+		FROM Sales.Orders
+		ORDER BY orderdate DESC; --, orderid DESC;
+
+	/*
+			In order to make the syntax intuitive, you can use the keywords NEXT or FIRST interchangeably.
+		When skipping some rows, it might be more intuitive to you to use the keywords FETCH NEXT to indicate 
+		how many rows to filter; but when not skipping any rows, it might be more intuitive to you to use the 
+		keywords FETCH FIRST.
+	*/
+
+	SELECT orderid, orderdate, custid, empid
+		FROM Sales.Orders
+		ORDER BY orderdate DESC, orderid DESC /*obrigatório*/
+		OFFSET 50 ROWS FETCH NEXT 25 ROWS ONLY;
+
+	SELECT orderid, orderdate, custid, empid
+		FROM Sales.Orders
+		ORDER BY orderdate DESC, orderid DESC
+		OFFSET 0 ROWS FETCH FIRST 25 ROW/*(S)*/ ONLY;
+
+	SELECT orderid, orderdate, custid, empid
+		FROM Sales.Orders
+		ORDER BY orderdate DESC, orderid DESC
+		OFFSET 50 ROWS;
+
+	SELECT orderid, orderdate, custid, empid
+		FROM Sales.Orders
+		ORDER BY (SELECT NULL) /*Gambi*/
+		OFFSET 0 ROWS FETCH FIRST 3 ROWS ONLY;
+
+	-- exemplo de paginação
+	DECLARE @pagesize AS BIGINT = 25, @pagenum AS BIGINT = 3;
+	SELECT orderid, orderdate, custid, empid
+		FROM Sales.Orders
+		ORDER BY orderdate DESC, orderid DESC
+		OFFSET (@pagesize - 1) * @pagesize ROWS FETCH NEXT @pagesize ROWS ONLY;
+
+	-- Question: How do you guarantee deterministic results with TOP?
+	-- Answer: OFFSET-FETCH is standard and TOP isn’t; also, OFFSET-FETCH supports a skipping capability that TOP doesn’t.
+
+	-- Exercício: Fazer os Case Scenarios;
