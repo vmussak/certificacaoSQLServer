@@ -98,7 +98,11 @@
 		WHERE country = N'USA' AND region = N'WA'
 		ORDER BY birthdate;
 
+<<<<<<< HEAD
+-- FILTERING DATA WITH TOP AND OFFSET-FETH
+=======
 -- FILTERING DATA WITH TOP AND OFFSET-FETCH
+>>>>>>> 2fec702a0a627ed09f4d3eea6d9341992ca0e805
 
 	SELECT TOP (3) orderid, orderdate, custid, empid
 		FROM Sales.Orders
